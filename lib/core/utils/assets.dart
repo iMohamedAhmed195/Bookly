@@ -1,3 +1,3 @@
 class AssetsData{
-  static const logo = "";
+  static const logo = "assets/images/logo.svg";
 }

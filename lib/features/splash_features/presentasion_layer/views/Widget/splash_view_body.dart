@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class  SplashViewBody extends StatelessWidget {
   const SplashViewBody ({super.key});
 
@@ -6,7 +7,7 @@ class  SplashViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Column(
       children: const [
-
+        SvgPicture.asset
       ]
     );
   }
