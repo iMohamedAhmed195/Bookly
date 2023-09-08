@@ -7,11 +7,26 @@ class CustomListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   SizedBox(
+    return   AspectRatio(
+        aspectRatio:1/2,
+        child: SvgPicture.asset(AssetsData.book , ));
+  }
+}
+class FeatureBooksListView extends StatelessWidget {
+  const FeatureBooksListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.3,
-      child: AspectRatio(
-          aspectRatio:3/2,
-          child: SvgPicture.asset(AssetsData.book ,fit: BoxFit.contain, )),
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: CustomListItem(),
+            );
+          }),
     );
   }
 }
