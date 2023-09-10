@@ -5,6 +5,7 @@ import 'package:booklyy/features/home_feature/presentation/view/widget/featured_
 import 'package:flutter/material.dart';
 
 
+
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
@@ -34,5 +35,6 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
+
 
 
