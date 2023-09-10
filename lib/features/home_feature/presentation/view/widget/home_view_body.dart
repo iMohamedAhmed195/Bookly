@@ -1,7 +1,7 @@
 import 'package:booklyy/core/utils/styles.dart';
 import 'package:booklyy/features/home_feature/presentation/view/widget/best_seller_list_item.dart';
 import 'package:booklyy/features/home_feature/presentation/view/widget/custom_appbar.dart';
-import 'package:booklyy/features/home_feature/presentation/view/widget/featured_listview_home.dart';
+import 'package:booklyy/features/home_feature/presentation/view/widget/featured_list_view_home.dart';
 import 'package:flutter/material.dart';
 
 
