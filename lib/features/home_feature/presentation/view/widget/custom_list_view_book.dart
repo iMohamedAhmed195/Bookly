@@ -7,8 +7,10 @@ class CustomListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   AspectRatio(
-        aspectRatio:1/2,
-        child: SvgPicture.asset(AssetsData.book , ));
+    return
+       AspectRatio(
+          aspectRatio:1.5/3,
+          child: SvgPicture.asset(AssetsData.book ,));
+
   }
 }
