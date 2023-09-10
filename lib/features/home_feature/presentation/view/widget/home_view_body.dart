@@ -1,4 +1,5 @@
 
+import 'package:booklyy/core/utils/styles.dart';
 import 'package:booklyy/features/home_feature/presentation/view/widget/custom_appbar.dart';
 import 'package:booklyy/features/home_feature/presentation/view/widget/custom_list_view_book.dart';
 import 'package:booklyy/features/home_feature/presentation/view/widget/featured_listview_home.dart';
@@ -19,9 +20,8 @@ class HomeViewBody extends StatelessWidget {
           CustomAppBar(),
            FeatureBooksListView(),
           Padding(
-            padding: EdgeInsets.only(left: 15.0 ,right: 20.0,top: 15),
-            child: Text('asd'
-              // 'Best Seller',style: Styles.titleMedium,
+            padding: EdgeInsets.only(left: 15.0 ,right: 20.0,top: 10),
+            child: Text('Best Seller',style: Styles.titleMedium,
             ),
           )
         ],
