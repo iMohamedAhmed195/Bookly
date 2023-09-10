@@ -22,10 +22,11 @@ class HomeViewBody extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: CustomAppBar(),
               ),
+              SizedBox(height: 30,),
               FeatureBooksListView(),
               Padding(
                 padding:
-                EdgeInsets.only(left: 10.0, right: 20.0, top: 10,bottom: 20),
+                EdgeInsets.only(left: 10.0, right: 20.0, top:40,bottom: 20),
                 child: Text(
                   'Best Seller',
                   style: Styles.textStyle18,

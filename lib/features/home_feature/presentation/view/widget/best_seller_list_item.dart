@@ -21,7 +21,7 @@ class BestSellerListViewItem extends StatelessWidget {
         child: Row(
           children: [
             AspectRatio(
-                aspectRatio: 2 / 3, child: SvgPicture.asset(AssetsData.book)),
+                aspectRatio: 2.7 / 4, child: SvgPicture.asset(AssetsData.book , fit: BoxFit.fill,)),
             const SizedBox(
               width: 30,
             ),
