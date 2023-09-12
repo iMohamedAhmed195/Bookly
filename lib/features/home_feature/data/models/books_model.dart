@@ -1,6 +1,8 @@
+import 'package:booklyy/features/home_feature/domain/entities/book_entity.dart';
+
 class BooksModel {
   String? kind;
-  int? totalItems;
+  num? totalItems;
   List<Items>? items;
 
   BooksModel({this.kind, this.totalItems, this.items});
@@ -15,11 +17,9 @@ class BooksModel {
       });
     }
   }
-
-
 }
 
-class Items {
+class Items extends BookEntity {
   String? kind;
   String? id;
   String? etag;
@@ -31,34 +31,39 @@ class Items {
 
   Items(
       {this.kind,
-        this.id,
-        this.etag,
-        this.selfLink,
-        this.volumeInfo,
-        this.saleInfo,
-        this.accessInfo,
-        this.searchInfo});
+      this.id,
+      this.etag,
+      this.selfLink,
+      this.volumeInfo,
+      this.saleInfo,
+      this.accessInfo,
+      this.searchInfo})
+      : super(
+            image: volumeInfo?.imageLinks?.thumbnail ?? '',
+            title: volumeInfo!.title!,
+            authorName: volumeInfo.authors?.first ?? 'No Namae',
+            price: 0.0,
+            rating: volumeInfo.averageRating,
+            bookId: id!);
 
-  Items.fromJson(Map<String, dynamic> json) {
-    kind = json['kind'];
-    id = json['id'];
-    etag = json['etag'];
-    selfLink = json['selfLink'];
-    volumeInfo = json['volumeInfo'] != null
-        ? VolumeInfo.fromJson(json['volumeInfo'])
-        : null;
-    saleInfo = json['saleInfo'] != null
-        ? SaleInfo.fromJson(json['saleInfo'])
-        : null;
-    accessInfo = json['accessInfo'] != null
-        ? AccessInfo.fromJson(json['accessInfo'])
-        : null;
-    searchInfo = json['searchInfo'] != null
-        ? SearchInfo.fromJson(json['searchInfo'])
-        : null;
-  }
-
-
+  factory Items.fromJson(Map<String, dynamic> json) => Items(
+        kind: json['kind'],
+        id: json['id'],
+        etag: json['etag'],
+        selfLink: json['selfLink'],
+        volumeInfo: json['volumeInfo'] != null
+            ? VolumeInfo.fromJson(json['volumeInfo'])
+            : null,
+        saleInfo: json['saleInfo'] != null
+            ? SaleInfo.fromJson(json['saleInfo'])
+            : null,
+        accessInfo: json['accessInfo'] != null
+            ? AccessInfo.fromJson(json['accessInfo'])
+            : null,
+        searchInfo: json['searchInfo'] != null
+            ? SearchInfo.fromJson(json['searchInfo'])
+            : null,
+      );
 }
 
 class VolumeInfo {
@@ -70,8 +75,8 @@ class VolumeInfo {
   String? description;
   List<IndustryIdentifiers>? industryIdentifiers;
   ReadingModes? readingModes;
-  int? pageCount;
-  String? printType;
+  num? pageCount;
+  String? prnumType;
   List<String>? categories;
   String? maturityRating;
   bool? allowAnonLogging;
@@ -82,32 +87,32 @@ class VolumeInfo {
   String? previewLink;
   String? infoLink;
   String? canonicalVolumeLink;
-  int? averageRating;
-  int? ratingsCount;
+  num? averageRating;
+  num? ratingsCount;
 
   VolumeInfo(
       {this.title,
-        this.subtitle,
-        this.authors,
-        this.publisher,
-        this.publishedDate,
-        this.description,
-        this.industryIdentifiers,
-        this.readingModes,
-        this.pageCount,
-        this.printType,
-        this.categories,
-        this.maturityRating,
-        this.allowAnonLogging,
-        this.contentVersion,
-        this.panelizationSummary,
-        this.imageLinks,
-        this.language,
-        this.previewLink,
-        this.infoLink,
-        this.canonicalVolumeLink,
-        this.averageRating,
-        this.ratingsCount});
+      this.subtitle,
+      this.authors,
+      this.publisher,
+      this.publishedDate,
+      this.description,
+      this.industryIdentifiers,
+      this.readingModes,
+      this.pageCount,
+      this.prnumType,
+      this.categories,
+      this.maturityRating,
+      this.allowAnonLogging,
+      this.contentVersion,
+      this.panelizationSummary,
+      this.imageLinks,
+      this.language,
+      this.previewLink,
+      this.infoLink,
+      this.canonicalVolumeLink,
+      this.averageRating,
+      this.ratingsCount});
 
   VolumeInfo.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -126,7 +131,7 @@ class VolumeInfo {
         ? ReadingModes.fromJson(json['readingModes'])
         : null;
     pageCount = json['pageCount'];
-    printType = json['printType'];
+    prnumType = json['prnumType'];
     categories = json['categories'].cast<String>();
     maturityRating = json['maturityRating'];
     allowAnonLogging = json['allowAnonLogging'];
@@ -144,8 +149,6 @@ class VolumeInfo {
     averageRating = json['averageRating'];
     ratingsCount = json['ratingsCount'];
   }
-
-
 }
 
 class IndustryIdentifiers {
@@ -158,8 +161,6 @@ class IndustryIdentifiers {
     type = json['type'];
     identifier = json['identifier'];
   }
-
-
 }
 
 class ReadingModes {
@@ -172,8 +173,6 @@ class ReadingModes {
     text = json['text'];
     image = json['image'];
   }
-
-
 }
 
 class PanelizationSummary {
@@ -186,8 +185,6 @@ class PanelizationSummary {
     containsEpubBubbles = json['containsEpubBubbles'];
     containsImageBubbles = json['containsImageBubbles'];
   }
-
-
 }
 
 class ImageLinks {
@@ -200,8 +197,6 @@ class ImageLinks {
     smallThumbnail = json['smallThumbnail'];
     thumbnail = json['thumbnail'];
   }
-
-
 }
 
 class SaleInfo {
@@ -215,12 +210,12 @@ class SaleInfo {
 
   SaleInfo(
       {this.country,
-        this.saleability,
-        this.isEbook,
-        this.listPrice,
-        this.retailPrice,
-        this.buyLink,
-        this.offers});
+      this.saleability,
+      this.isEbook,
+      this.listPrice,
+      this.retailPrice,
+      this.buyLink,
+      this.offers});
 
   SaleInfo.fromJson(Map<String, dynamic> json) {
     country = json['country'];
@@ -240,7 +235,6 @@ class SaleInfo {
       });
     }
   }
-
 }
 
 class ListPriceBook {
@@ -253,12 +247,10 @@ class ListPriceBook {
     amount = json['amount'];
     currencyCode = json['currencyCode'];
   }
-
-
 }
 
 class Offers {
-  int? finskyOfferType;
+  num? finskyOfferType;
   ListPrice? listPrice;
   RetailPrice? retailPrice;
 
@@ -273,12 +265,10 @@ class Offers {
         ? RetailPrice.fromJson(json['retailPrice'])
         : null;
   }
-
-
 }
 
 class ListPrice {
-  int? amountInMicros;
+  num? amountInMicros;
   String? currencyCode;
 
   ListPrice({this.amountInMicros, this.currencyCode});
@@ -287,11 +277,10 @@ class ListPrice {
     amountInMicros = json['amountInMicros'];
     currencyCode = json['currencyCode'];
   }
-
 }
 
 class RetailPrice {
-  int? amountInMicros;
+  num? amountInMicros;
   String? currencyCode;
 
   RetailPrice({this.amountInMicros, this.currencyCode});
@@ -300,7 +289,6 @@ class RetailPrice {
     amountInMicros = json['amountInMicros'];
     currencyCode = json['currencyCode'];
   }
-
 }
 
 class AccessInfo {
@@ -317,15 +305,15 @@ class AccessInfo {
 
   AccessInfo(
       {this.country,
-        this.viewability,
-        this.embeddable,
-        this.publicDomain,
-        this.textToSpeechPermission,
-        this.epub,
-        this.pdf,
-        this.webReaderLink,
-        this.accessViewStatus,
-        this.quoteSharingAllowed});
+      this.viewability,
+      this.embeddable,
+      this.publicDomain,
+      this.textToSpeechPermission,
+      this.epub,
+      this.pdf,
+      this.webReaderLink,
+      this.accessViewStatus,
+      this.quoteSharingAllowed});
 
   AccessInfo.fromJson(Map<String, dynamic> json) {
     country = json['country'];
@@ -339,8 +327,6 @@ class AccessInfo {
     accessViewStatus = json['accessViewStatus'];
     quoteSharingAllowed = json['quoteSharingAllowed'];
   }
-
-
 }
 
 class Epub {
@@ -353,8 +339,6 @@ class Epub {
     isAvailable = json['isAvailable'];
     acsTokenLink = json['acsTokenLink'];
   }
-
-
 }
 
 class SearchInfo {
@@ -365,6 +349,4 @@ class SearchInfo {
   SearchInfo.fromJson(Map<String, dynamic> json) {
     textSnippet = json['textSnippet'];
   }
-
-
 }
