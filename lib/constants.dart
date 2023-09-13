@@ -5,3 +5,4 @@ const kTransitionAnimation = Duration(milliseconds: 250);
 const kGtSectraFine= 'GT Sectra Fine' ;
 const kMendalion= 'Mendalion' ;
 const kFeaturedBox= 'featured_box' ;
+const kNewestBox= 'newest_box' ;
