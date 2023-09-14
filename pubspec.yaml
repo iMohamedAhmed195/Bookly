@@ -46,6 +46,7 @@ dependencies:
   hive_flutter:
   bloc: ^8.1.2
   flutter_bloc: ^8.1.3
+  get_it: ^7.6.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

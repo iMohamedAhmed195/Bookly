@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:booklyy/features/home_feature/domain/entities/book_entity.dart';
 import 'package:booklyy/features/home_feature/domain/use_cases/fetch_newest_books_use_case.dart';
-import 'package:meta/meta.dart';
+
 
 part 'newest_books_state.dart';
 
